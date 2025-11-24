@@ -10,7 +10,7 @@
 <body>
     <script>
         // Redirect to the /amasaka/ subdirectory
-        window.location.href = "English/index.php";
+        window.location.href = "French/index.php";
     </script>
 </body>
 

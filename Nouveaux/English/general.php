@@ -13,7 +13,7 @@ ob_start();
 
     <!-- TOP TEXT -->
     <div class="text-sm text-gray-500 mb-3">
-        Dashboard › <span class="font-semibold text-gray-700">About</span>
+        Dashboard › <span class="font-semibold text-gray-700">General</span>
     </div>
 
     <!-- BUTTONS TOGETHER ON THE RIGHT -->
@@ -49,33 +49,55 @@ ob_start();
 
                 <!-- Title -->
                 <div>
-                    <label class="text-sm text-gray-600">Title</label>
+                    <label class="text-sm text-gray-600">E-mail</label>
                     <input
-                        type="text"
-                        name="title"
+                        type="email"
+                        name="email"
                         class="w-full border rounded px-2 py-1 text-sm outline-none"
-                        placeholder="Enter title..."
+                        placeholder="Enter e-mail..."
                         required>
                 </div>
                 <div>
-                    <label class="text-sm text-gray-600">Second Title</label>
+                    <label class="text-sm text-gray-600">Telephone</label>
                     <input
                         type="text"
-                        name="second_title"
+                        name="telephone"
                         class="w-full border rounded px-2 py-1 text-sm outline-none"
-                        placeholder="Enter second title..."
+                        placeholder="Enter telephone..."
                         required>
                 </div>
 
-                <!-- Description -->
+                <!-- Title -->
                 <div>
-                    <label class="text-sm text-gray-600">Description</label>
-                    <textarea
-                        name="description"
-                        rows="6"
+                    <label class="text-sm text-gray-600">Addresse</label>
+                    <input
+                        type="text"
+                        name="address"
                         class="w-full border rounded px-2 py-1 text-sm outline-none"
-                        placeholder="Write something..."
-                        required></textarea>
+                        placeholder="Enter address..."
+                        required>
+                </div>
+
+                <!-- Title -->
+                <div>
+                    <label class="text-sm text-gray-600">Date</label>
+                    <input
+                        type="date"
+                        name="date"
+                        class="w-full border rounded px-2 py-1 text-sm outline-none"
+                        placeholder="Enter date..."
+                        required>
+                </div>
+
+                <!-- Title -->
+                <div>
+                    <label class="text-sm text-gray-600">Day</label>
+                    <input
+                        type="text"
+                        name="day"
+                        class="w-full border rounded px-2 py-1 text-sm outline-none"
+                        placeholder="Enter day..."
+                        required>
                 </div>
 
             </div>
@@ -86,7 +108,7 @@ ob_start();
 
                 <!-- Upload Image -->
                 <div>
-                    <label class="text-sm text-gray-600">Upload Image</label>
+                    <label class="text-sm text-gray-600">Logo Image</label>
                     <input
                         type="file"
                         name="image"

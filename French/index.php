@@ -212,9 +212,9 @@
                         </button>
 
                         <div id="lang-menu" class="hidden absolute right-0 mt-2 w-44 bg-white border rounded-md py-2 shadow-lg">
-                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="fr">Français (FR)</button>
-                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="en">English (EN)</button>
-                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="sw">Kiswahili (SW)</button>
+                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="fr"><a href="../French/index.php">Français (FR)</a></button>
+                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="en"><a href="../English/index.php">English (EN)</a></button>
+                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="sw"><a href="../Swahili/index.php">Kiswahili (SW)</a></button>
                         </div>
                     </div>
                 </nav>
@@ -232,21 +232,20 @@
         <!-- mobile nav panel -->
         <div id="mobile-nav" class="hidden md:hidden bg-white border-t">
             <div class="px-4 py-4 space-y-3">
-                <a href="#accueil" class="block flex items-center gap-3"><i data-feather="home" class="w-5 h-5"></i>Accueil</a>
-                <a href="#about" class="block flex items-center gap-3"><i data-feather="info" class="w-5 h-5"></i>À Propos</a>
-                <a href="#missions" class="block flex items-center gap-3"><i data-feather="flag" class="w-5 h-5"></i>Missions</a>
-                <a href="#events" class="block flex items-center gap-3"><i data-feather="calendar" class="w-5 h-5"></i>Événements</a>
-                <a href="#testimonials" class="block flex items-center gap-3"><i data-feather="message-circle" class="w-5 h-5"></i>Témoignages</a>
-                <a href="#donations" class="block flex items-center gap-3"><i data-feather="heart" class="w-5 h-5"></i>Dons</a>
-                <a href="#contact" class="block flex items-center gap-3"><i data-feather="phone-call" class="w-5 h-5"></i>Contact</a>
+                <a href="index.php" class="block flex items-center gap-3"><i data-feather="home" class="w-5 h-5"></i>Accueil</a>
+                <a href="about.php" class="block flex items-center gap-3"><i data-feather="info" class="w-5 h-5"></i>À Propos</a>
+                <a href="events.php" class="block flex items-center gap-3"><i data-feather="calendar" class="w-5 h-5"></i>Événements</a>
+                <a href="testimonials.php" class="block flex items-center gap-3"><i data-feather="message-circle" class="w-5 h-5"></i>Témoignages</a>
+                <a href="donations.php" class="block flex items-center gap-3"><i data-feather="heart" class="w-5 h-5"></i>Dons</a>
+                <a href="contact.php" class="block flex items-center gap-3"><i data-feather="phone-call" class="w-5 h-5"></i>Contact</a>
 
                 <div class="pt-2 border-t mt-2">
                     <div class="flex items-center gap-2">
                         <i data-feather="globe" class="w-5 h-5"></i>
                         <select id="mobile-lang" class="w-full border rounded px-2 py-1">
-                            <option value="fr">Français (FR)</option>
-                            <option value="en">English (EN)</option>
-                            <option value="sw">Kiswahili (SW)</option>
+                            <option value="fr" onclick="window.location.href='../French/index.php'"><a href="">Français (FR)</a></option>
+                            <option value="en" onclick="window.location.href='../English/index.php'">English (EN)</option>
+                            <option value="sw" onclick="window.location.href='../Swahili/index.php'">Kiswahili (SW)</option>
                         </select>
                     </div>
 
@@ -265,7 +264,78 @@
         </div>
     </header>
 
+    <!-- HERO: SLIDER -->
+    <section id="accueil" class="hero-slider relative">
+        <div class="slides" id="slides">
+            <!-- Slide 1 -->
+            <div class="slide bg-[url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1600')] bg-cover bg-center">
+                <div class="overlay"></div>
+                <div class="content text-white">
+                    <h1 class=" font-bold text-3xl md:text-5xl lg:text-6xl mb-4 text-shadow">Quality without delay</h1>
+                    <p class="text-lg md:text-xl mb-6 text-shadow">Tous ensemble pour une valorisation du peuple</p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded bg-primary-gold text-white font-semibold shadow hover:opacity-95">
+                            <i data-feather="user-plus" class="w-5 h-5"></i>Nous Rejoindre
+                        </a>
+                        <a href="#donations" class="inline-flex items-center gap-2 px-6 py-3 rounded border bg-white text-gray-800 transition">
+                            <i data-feather="heart" class="w-5 h-5"></i>Faire un Don
+                        </a>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Slide 2 -->
+            <div class="slide bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1600')] bg-cover bg-center">
+                <div class="overlay"></div>
+                <div class="content text-white">
+                    <h1 class=" font-bold text-3xl md:text-5xl lg:text-6xl mb-4 text-shadow">Ensemble pour le changement</h1>
+                    <p class="text-lg md:text-xl mb-6 text-shadow">Transformer des vies à travers l'éducation et le développement</p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <a href="#missions" class="inline-flex items-center gap-2 px-6 py-3 rounded bg-primary-gold text-white font-semibold shadow hover:opacity-95">
+                            <i data-feather="target" class="w-5 h-5"></i>Nos Missions
+                        </a>
+                        <a href="#about" class="inline-flex items-center gap-2 px-6 py-3 rounded border bg-white text-gray-800 transition">
+                            <i data-feather="info" class="w-5 h-5"></i>En savoir plus
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide bg-[url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1600')] bg-cover bg-center">
+                <div class="overlay"></div>
+                <div class="content text-white">
+                    <h1 class=" font-bold text-3xl md:text-5xl lg:text-6xl mb-4 text-shadow">Votre soutien fait la différence</h1>
+                    <p class="text-lg md:text-xl mb-6 text-shadow">Rejoignez notre communauté de donateurs engagés</p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <a href="#donations" class="inline-flex items-center gap-2 px-6 py-3 rounded bg-primary-gold text-white font-semibold shadow hover:opacity-95">
+                            <i data-feather="dollar-sign" class="w-5 h-5"></i>Faire un Don
+                        </a>
+                        <a href="#events" class="inline-flex items-center gap-2 px-6 py-3 rounded border bg-white text-gray-800 transition">
+                            <i data-feather="calendar" class="w-5 h-5"></i>Nos Événements
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- slider controls -->
+        <div class="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
+            <button id="prev-slide" class="pointer-events-auto slider-btn rounded w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white mx-1">
+                <i data-feather="chevron-left" class="w-6 h-6"></i>
+            </button>
+            <button id="next-slide" class="pointer-events-auto slider-btn rounded w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white mx-1">
+                <i data-feather="chevron-right" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- dots -->
+        <div class="absolute bottom-8 left-0 right-0 flex justify-center gap-3 z-20">
+            <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="dot" data-index="1" aria-label="Slide 2"></button>
+            <button class="dot" data-index="2" aria-label="Slide 3"></button>
+        </div>
+    </section>
 
     <!-- ABOUT -->
     <section id="about" class="py-16 md:py-24 bg-light-beige">
@@ -276,7 +346,7 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="">
+                <div class="fade-in">
                     <h3 class="text-2xl font-semibold text-primary-gold mb-4">Notre Mission</h3>
                     <p class="mb-4">Depuis plus de 20 ans, nous œuvrons pour répandre la Parole de Dieu et apporter un soutien concret aux communautés dans le besoin à travers le monde.</p>
                     <p class="mb-4">Notre groupe missionnaire est animé par la foi, la compassion et le désir de servir. Nous croyons que chaque personne mérite d'entendre le message d'amour du Christ et de recevoir une aide concrète dans les moments difficiles.</p>
@@ -365,10 +435,215 @@
         </div>
     </section>
 
+    <!-- EVENTS -->
+    <section id="events" class="py-16 md:py-24 bg-gradient-to-r from-[#6C757D] to-[#C9A962] text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Événements & Actions de Grâce</h2>
+                <p class="mt-3 max-w-2xl mx-auto">Découvrez nos événements passés et à venir</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Event 1 -->
+                <div class="event-item bg-white/40 p-6 rounded-md flex flex-col justify-between">
+                    <div class="h-56 rounded-md mission-image bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900')] bg-cover bg-center"></div>
+                    <div class="">
+                        <h3 class="text-xl text-black font-semibold">Célébration de Noël Missionnaire</h3>
+                        <p class="mt-2">Soirée de louange, témoignages et partage autour de la naissance du Christ. Un moment de communion fraternelle ouvert à tous.</p>
+                        <div class="text-black font-semibold mt-4">📅 15 Décembre 2025</div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-item bg-white/40 p-6 rounded-md flex flex-col justify-between">
+                    <div class="h-56 rounded-md mission-image bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900')] bg-cover bg-center"></div>
+                    <div>
+                        <h3 class="text-xl text-black font-semibold">Conférence sur l'Évangélisation</h3>
+                        <p class="mt-2">Une journée de formation et d'échange sur les méthodes d'évangélisation modernes avec des missionnaires expérimentés.</p>
+                    </div>
+                    <div class="text-black font-semibold mt-4">📅 20 Janvier 2025</div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-item bg-white/40 p-6 rounded-md flex flex-col justify-between">
+                    <div class="h-56 rounded-md mission-image bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900')] bg-cover bg-center"></div>
+                    <div>
+                        <h3 class="text-xl text-black font-semibold">Action Caritative Printanière</h3>
+                        <p class="mt-2">Collecte de fonds et de denrées pour soutenir nos missions humanitaires en Afrique et en Amérique Latine.</p>
+                    </div>
+                    <div class="text-black font-semibold mt-4">📅 5 Mars 2025</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-16 md:py-24 bg-light-beige">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class=" text-3xl md:text-4xl font-bold">Témoignages</h2>
+                <p class="mt-3 text-gray-600 max-w-2xl mx-auto">Ils ont vécu l'expérience missionnaire et témoignent de leur foi</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="relative testimonial-card bg-gray-200 p-6 rounded-md card-shadow">
+                    <p class="italic text-gray-700 mb-6">"Partir en mission au Kenya a transformé ma vie. Voir la joie dans les yeux des enfants était indescriptible."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-gold text-white inline-flex items-center justify-center font-semibold">MJ</div>
+                        <div>
+                            <div class="font-medium">Marie-Jeanne Dubois</div>
+                            <div class="text-sm text-gray-500">Missionnaire, Kenya 2024</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative testimonial-card bg-gray-200 p-6 rounded-md card-shadow">
+                    <p class="italic text-gray-700 mb-6">"Cette expérience m'a appris l'essentiel : aimer sans compter et servir avec humilité."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-gold text-white inline-flex items-center justify-center font-semibold">PD</div>
+                        <div>
+                            <div class="font-medium">Pierre Durand</div>
+                            <div class="text-sm text-gray-500">Missionnaire, Brésil 2023</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative testimonial-card bg-gray-200 p-6 rounded-md card-shadow">
+                    <p class="italic text-gray-700 mb-6">"Travailler avec Masaka Initiative m'a permis de concilier ma foi et mon désir d'aider les autres."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-gold text-white inline-flex items-center justify-center font-semibold">SM</div>
+                        <div>
+                            <div class="font-medium">Sophie Martin</div>
+                            <div class="text-sm text-gray-500">Bénévole, Philippines 2024</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DONATIONS -->
+    <section id="donations" class="relative py-16 md:py-24 bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1600')] bg-cover bg-center text-white">
+        <!-- Dark overlay must cover full section -->
+        <div class="absolute inset-0 bg-black/40 h-full w-full"></div>
+
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Soutenez Notre Mission</h2>
+            <p class="mb-8 max-w-2xl mx-auto">Votre générosité permet de changer des vies et de répandre l'amour du Christ</p>
+
+            <div class="bg-white/50 p-8 rounded-md inline-block donation-box">
+                <h3 class="text-2xl mb-4 text-black">Faire un Don</h3>
+                <p class="mb-6 text-black">Chaque contribution compte et aide à financer nos missions, construire des églises et soutenir les communautés dans le besoin.</p>
+
+                <div class="flex flex-wrap gap-3 justify-center mb-6">
+                    <button class="amount-btn px-4 py-2 rounded-full">20€</button>
+                    <button class="amount-btn px-4 py-2 rounded-full">50€</button>
+                    <button class="amount-btn px-4 py-2 rounded-full">100€</button>
+                    <button class="amount-btn px-4 py-2 rounded-full">200€</button>
+                    <button class="amount-btn px-4 py-2 rounded-full">Autre</button>
+                </div>
+
+                <a href="donation.php" class="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary-gold text-white">Faire un Don Maintenant</a>
+                <p class="mt-6 text-sm opacity-80 text-black">💳 Paiement sécurisé | 📄 Reçu fiscal disponible</p>
+            </div>
+        </div>
+    </section>
 
 
+    <!-- CONTACT -->
+    <section id="contact" class="py-16 md:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl font-bold">Contactez-Nous</h2>
+                <p class="mt-3 text-gray-600 max-w-2xl mx-auto">Une question ? Envie de rejoindre notre mission ? Écrivez-nous !</p>
+            </div>
 
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- form -->
+                <form id="contact-form" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-sm font-medium">Nom complet *</label>
+                            <input required type="text" class="mt-1 block w-full border rounded-md px-3 py-2" placeholder="Votre nom">
+                        </div>
 
+                        <div>
+                            <label class="text-sm font-medium">Email *</label>
+                            <input required type="email" class="mt-1 block w-full border rounded-md px-3 py-2" placeholder="votre@email.com">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-medium">Téléphone</label>
+                        <input type="tel" class="mt-1 block w-full border rounded-md px-3 py-2" placeholder="+257 6 12 34 56 78">
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-medium">Sujet *</label>
+                        <input required type="text" class="mt-1 block w-full border rounded-md px-3 py-2" placeholder="Objet de votre message">
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-medium">Message *</label>
+                        <textarea required rows="6" class="mt-1 block w-full border rounded-md px-3 py-2" placeholder="Écrivez votre message ici..."></textarea>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-primary-gold text-white">Envoyer le Message</button>
+                    </div>
+                </form>
+
+                <!-- contact info -->
+                <div class="space-y-6">
+                    <div class="bg-light-beige p-6 rounded-xl">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-md bg-primary-gold text-white flex items-center justify-center">📍</div>
+                            <div>
+                                <h4 class="font-medium">Adresse</h4>
+                                <p class="text-sm text-gray-600">123 Avenue de la Mission<br>75015 Paris, France</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-light-beige p-6 rounded-md">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-md bg-primary-gold text-white flex items-center justify-center">📞</div>
+                            <div>
+                                <h4 class="font-medium">Téléphone</h4>
+                                <p class="text-sm text-gray-600">+257 1 23 45 67 89<br>Lun-Ven: 9h00 - 18h00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-light-beige p-6 rounded-md">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-md bg-primary-gold text-white flex items-center justify-center">✉️</div>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <p class="text-sm text-gray-600">contact@lumierechrist.org<br>mission@lumierechrist.org</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-light-beige p-6 rounded-md">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-md bg-primary-gold text-white flex items-center justify-center">🌐</div>
+                            <div>
+                                <h4 class="font-medium">Suivez-nous</h4>
+                                <div class="flex items-center gap-3 mt-3">
+                                    <a href="#" class="p-3 rounded-full bg-primary-gold text-white"><i data-feather="facebook" class="w-4 h-4"></i></a>
+                                    <a href="#" class="p-3 rounded-full bg-primary-gold text-white"><i data-feather="instagram" class="w-4 h-4"></i></a>
+                                    <a href="#" class="p-3 rounded-full bg-primary-gold text-white"><i data-feather="twitter" class="w-4 h-4"></i></a>
+                                    <a href="#" class="p-3 rounded-full bg-primary-gold text-white"><i data-feather="linkedin" class="w-4 h-4"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer class="bg-gray-900 text-white">

@@ -212,9 +212,9 @@
                         </button>
 
                         <div id="lang-menu" class="hidden absolute right-0 mt-2 w-44 bg-white border rounded-md py-2 shadow-lg">
-                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="fr">Français (FR)</button>
-                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="en">English (EN)</button>
-                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="sw">Kiswahili (SW)</button>
+                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="fr"><a href="../French/index.php">Français (FR)</a></button>
+                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="en"><a href="../English/index.php">English (EN)</a></button>
+                            <button class="w-full text-left px-3 py-2 hover:bg-gray-100" data-lang="sw"><a href="../Swahili/index.php">Kiswahili (SW)</a></button>
                         </div>
                     </div>
                 </nav>
@@ -244,9 +244,9 @@
                     <div class="flex items-center gap-2">
                         <i data-feather="globe" class="w-5 h-5"></i>
                         <select id="mobile-lang" class="w-full border rounded px-2 py-1">
-                            <option value="fr">Français (FR)</option>
-                            <option value="en">English (EN)</option>
-                            <option value="sw">Kiswahili (SW)</option>
+                            <option value="fr"><a href="../French/index.php">Français (FR)</a></option>
+                            <option value="en"><a href="../English/index.php">English (EN)</a></option>
+                            <option value="sw"><a href="../Swahili/index.php">Kiswahili (SW)</a></option>
                         </select>
                     </div>
 
@@ -265,47 +265,33 @@
         </div>
     </header>
 
+    <!-- DONATIONS -->
+    <section id="donations" class="relative py-16 md:py-24 bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1600')] bg-cover bg-center text-white">
+        <!-- Dark overlay must cover full section -->
+        <div class="absolute inset-0 bg-black/40 h-full w-full"></div>
 
-    <!-- EVENTS -->
-    <section id="events" class="py-16 md:py-24 bg-gradient-to-r from-[#6C757D] to-[#C9A962] text-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold">Événements & Actions de Grâce</h2>
-                <p class="mt-3 max-w-2xl mx-auto">Découvrez nos événements passés et à venir</p>
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Soutenez Notre Mission</h2>
+            <p class="mb-8 max-w-2xl mx-auto">Votre générosité permet de changer des vies et de répandre l'amour du Christ</p>
+
+            <div class="bg-white/50 p-8 rounded-md inline-block donation-box">
+                <h3 class="text-2xl mb-4 text-black">Faire un Don</h3>
+                <p class="mb-6 text-black">Chaque contribution compte et aide à financer nos missions, construire des églises et soutenir les communautés dans le besoin.</p>
+
+                <div class="flex flex-wrap gap-3 justify-center mb-6">
+                    <button class="amount-btn px-4 py-2 rounded-full">20€</button>
+                    <button class="amount-btn px-4 py-2 rounded-full">50€</button>
+                    <button class="amount-btn px-4 py-2 rounded-full">100€</button>
+                    <button class="amount-btn px-4 py-2 rounded-full">200€</button>
+                    <button class="amount-btn px-4 py-2 rounded-full">Autre</button>
+                </div>
+
+                <a href="donation.php" class="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary-gold text-white">Faire un Don Maintenant</a>
+                <p class="mt-6 text-sm opacity-80 text-black">💳 Paiement sécurisé | 📄 Reçu fiscal disponible</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Event 1 -->
-                <div class="event-item bg-white/40  rounded-md flex flex-col justify-between">
-                    <div class="h-56 mission-image bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900')] bg-cover bg-center"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl text-black font-semibold">Célébration de Noël Missionnaire</h3>
-                        <p class="mt-2">Soirée de louange, témoignages et partage autour de la naissance du Christ. Un moment de communion fraternelle ouvert à tous.</p>
-                        <div class="text-black font-semibold mt-4">📅 15 Décembre 2025</div>
-                    </div>
-                </div>
-
-                <!-- Event 2 -->
-                <div class="event-item bg-white/40 p-6 rounded-md flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl text-black font-semibold">Conférence sur l'Évangélisation</h3>
-                        <p class="mt-2">Une journée de formation et d'échange sur les méthodes d'évangélisation modernes avec des missionnaires expérimentés.</p>
-                    </div>
-                    <div class="text-black font-semibold mt-4">📅 20 Janvier 2025</div>
-                </div>
-
-                <!-- Event 3 -->
-                <div class="event-item bg-white/40 p-6 rounded-md flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-xl text-black font-semibold">Action Caritative Printanière</h3>
-                        <p class="mt-2">Collecte de fonds et de denrées pour soutenir nos missions humanitaires en Afrique et en Amérique Latine.</p>
-                    </div>
-                    <div class="text-black font-semibold mt-4">📅 5 Mars 2025</div>
-                </div>
-            </div>
-
         </div>
     </section>
+
 
     <!-- FOOTER -->
     <footer class="bg-gray-900 text-white">
@@ -363,94 +349,53 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
     <script>
-        // init feather icons once DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
             feather.replace();
 
-            // slider state
-            const slidesEl = document.getElementById('slides');
-            const dots = Array.from(document.querySelectorAll('.dot'));
-            const total = dots.length;
-            let index = 0;
-            let slideInterval;
-
-            function showSlide(i) {
-                index = (i + total) % total;
-                slidesEl.style.transform = `translateX(-${index * (100/total)}%)`;
-                dots.forEach((d, idx) => d.classList.toggle('active', idx === index));
-            }
-
-            document.getElementById('next-slide').addEventListener('click', () => {
-                showSlide(index + 1);
-                resetInterval();
-            });
-            document.getElementById('prev-slide').addEventListener('click', () => {
-                showSlide(index - 1);
-                resetInterval();
-            });
-
-            dots.forEach(d => {
-                d.addEventListener('click', (e) => {
-                    showSlide(parseInt(d.dataset.index));
-                    resetInterval();
-                });
-            });
-
-            function startInterval() {
-                slideInterval = setInterval(() => showSlide(index + 1), 5000);
-            }
-
-            function resetInterval() {
-                clearInterval(slideInterval);
-                startInterval();
-            }
-            startInterval();
-
-            // language menu (desktop)
+            /* ---------------------------------
+                LANGUAGE MENU (DESKTOP)
+            ----------------------------------*/
             const langBtn = document.getElementById('lang-btn');
             const langMenu = document.getElementById('lang-menu');
             const langLabel = document.getElementById('lang-label');
 
-            langBtn && langBtn.addEventListener('click', (e) => {
+            langBtn && langBtn.addEventListener('click', () => {
                 langMenu.classList.toggle('hidden');
             });
 
-            // language selection
             langMenu && langMenu.querySelectorAll('button').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const lang = btn.dataset.lang || 'fr';
                     langLabel.textContent = lang.toUpperCase();
                     langMenu.classList.add('hidden');
-
-                    // Here you could implement actual language switching:
-                    // - load localized strings via JSON
-                    // - redirect to /fr/ or /en/ pages
-                    // For now we just update label UI.
                 });
             });
 
-            // mobile menu toggle
+            /* ---------------------------------
+                MOBILE MENU
+            ----------------------------------*/
             const mobileBtn = document.getElementById('mobile-menu-btn');
             const mobileNav = document.getElementById('mobile-nav');
+
             mobileBtn && mobileBtn.addEventListener('click', () => {
                 mobileNav.classList.toggle('hidden');
             });
 
-            // mobile language select handler (if needed)
+            /* ---------------------------------
+                MOBILE LANGUAGE SELECT
+            ----------------------------------*/
             const mobileLang = document.getElementById('mobile-lang');
             mobileLang && mobileLang.addEventListener('change', () => {
-                // expected: process language change
-                // mobileLang.value contains new language code
+                // Handle language change here
             });
 
-            // smooth scrolling for hash links
+            /* ---------------------------------
+                SMOOTH SCROLL
+            ----------------------------------*/
             document.querySelectorAll('a[href^="#"]').forEach(a => {
                 a.addEventListener('click', function(e) {
-                    // if anchor is part of mobile nav, hide mobile nav after click
                     if (a.closest('#mobile-nav')) mobileNav.classList.add('hidden');
-
                     const href = this.getAttribute('href');
                     if (href && href.startsWith('#')) {
                         e.preventDefault();
@@ -463,7 +408,9 @@
                 });
             });
 
-            // fade-in on scroll
+            /* ---------------------------------
+                FADE-IN ANIMATION
+            ----------------------------------*/
             const io = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -474,61 +421,14 @@
 
             document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
-            // stats counter when visible
-            const statElements = Array.from(document.querySelectorAll('.stat-number'));
-            const statsObserver = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target;
-                        const target = parseInt(el.textContent.replace(/\D/g, '')) || 0;
-                        let curr = 0;
-                        const step = Math.max(1, Math.floor(target / 120));
-                        const timer = setInterval(() => {
-                            curr += step;
-                            if (curr >= target) {
-                                el.textContent = target.toLocaleString();
-                                clearInterval(timer);
-                            } else {
-                                el.textContent = curr.toLocaleString();
-                            }
-                        }, 12);
-                        statsObserver.unobserve(el);
-                    }
-                });
-            }, {
-                threshold: 0.5
-            });
-            statElements.forEach(e => statsObserver.observe(e));
-
-            // contact form submit handler (demo)
-            const contactForm = document.getElementById('contact-form');
-            contactForm && contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                // Simple demo: show alert and reset
-                alert('Merci pour votre message ! Nous vous répondrons bientôt.');
-                contactForm.reset();
-            });
-
-            // newsletter demo
-            const newsletter = document.getElementById('newsletter');
-            newsletter && newsletter.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Merci pour votre abonnement à la newsletter !');
-                newsletter.reset();
-            });
-
-            // donation amount selection visual
-            document.querySelectorAll('.amount-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('bg-primary-gold', 'text-white'));
-                    btn.classList.add('bg-primary-gold', 'text-white');
-                });
-            });
-
-            // set current year
+            /* ---------------------------------
+                CURRENT YEAR
+            ----------------------------------*/
             document.getElementById('current-year').textContent = new Date().getFullYear();
+
         });
     </script>
+
 </body>
 
 </html>

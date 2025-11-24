@@ -13,7 +13,7 @@ ob_start();
 
     <!-- TOP TEXT -->
     <div class="text-sm text-gray-500 mb-3">
-        Dashboard › <span class="font-semibold text-gray-700">About</span>
+        Dashboard › <span class="font-semibold text-gray-700">Envents</span>
     </div>
 
     <!-- BUTTONS TOGETHER ON THE RIGHT -->
@@ -58,12 +58,12 @@ ob_start();
                         required>
                 </div>
                 <div>
-                    <label class="text-sm text-gray-600">Second Title</label>
+                    <label class="text-sm text-gray-600">Date</label>
                     <input
-                        type="text"
-                        name="second_title"
+                        type="date"
+                        name="date"
                         class="w-full border rounded px-2 py-1 text-sm outline-none"
-                        placeholder="Enter second title..."
+                        placeholder="Enter date..."
                         required>
                 </div>
 

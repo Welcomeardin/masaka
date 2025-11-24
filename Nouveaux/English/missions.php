@@ -13,7 +13,7 @@ ob_start();
 
     <!-- TOP TEXT -->
     <div class="text-sm text-gray-500 mb-3">
-        Dashboard › <span class="font-semibold text-gray-700">About</span>
+        Dashboard › <span class="font-semibold text-gray-700">Missions</span>
     </div>
 
     <!-- BUTTONS TOGETHER ON THE RIGHT -->
@@ -58,13 +58,12 @@ ob_start();
                         required>
                 </div>
                 <div>
-                    <label class="text-sm text-gray-600">Second Title</label>
-                    <input
-                        type="text"
-                        name="second_title"
-                        class="w-full border rounded px-2 py-1 text-sm outline-none"
-                        placeholder="Enter second title..."
-                        required>
+                    <label class="text-sm text-gray-600">Status</label>
+                    <select class="w-full border rounded px-2 py-1 text-sm outline-none">
+                        <option>Termine</option>
+                        <option>Encoures</option>
+                    </select>
+
                 </div>
 
                 <!-- Description -->

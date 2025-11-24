@@ -244,12 +244,12 @@ $initials = substr($initials, 0, 2);
                                 </a>
                             </li>
 
-                            <li>
+                            <!-- <li>
                                 <a href="settings.php" class="flex items-center gap-3 hover:text-green-700">
                                     <i data-feather="settings" class="w-4 h-4 text-green-700"></i>
                                     Settings
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
 
 
