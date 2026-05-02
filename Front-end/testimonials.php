@@ -1,10 +1,39 @@
+<?php
+require_once __DIR__ . '/lang_init.php';
+require_once __DIR__ . '/../API/config.php';
+
+// Fetch settings
+$settings_query = $conn->query("SELECT * FROM settings LIMIT 1");
+$settings = $settings_query->fetch_assoc();
+
+// Fetch testimonials/gallery items
+$testimonials_query = $conn->query("
+    SELECT git.*, gi.media_url 
+    FROM gallery_items_translations git
+    JOIN gallery_items gi ON git.gallery_item_id = gi.id
+    WHERE git.language_id = $language_id AND gi.status = 'active'
+    ORDER BY gi.sort_order ASC
+    LIMIT 20
+");
+
+if (!$testimonials_query || $testimonials_query->num_rows == 0) {
+    $testimonials_query = $conn->query("
+        SELECT git.*, gi.media_url 
+        FROM gallery_items_translations git
+        JOIN gallery_items gi ON git.gallery_item_id = gi.id
+        WHERE git.language_id = 1 AND gi.status = 'active'
+        ORDER BY gi.sort_order ASC
+        LIMIT 20
+    ");
+}
+?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?php echo $lang_code; ?>">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Masaka Initiative - Mission Mondiale</title>
+    <title><?php echo $language_id == 1 ? 'Testimonials' : ($language_id == 2 ? 'Ushuhuda' : 'Témoignages'); ?> - Masaka Initiative</title>
 
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -265,110 +294,50 @@
         </div>
     </header>
 
-
-
-    <!-- ABOUT -->
-    <section id="about" class="py-16 md:py-24 bg-light-beige">
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-16 md:py-24 bg-light-beige">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="font-bold text-3xl md:text-4xl">Qui Sommes-Nous ?</h2>
-                <p class="mt-3 text-gray-600 max-w-2xl mx-auto">Un groupe missionnaire dédié à l'évangélisation et au service humanitaire</p>
+                <h2 class=" text-3xl md:text-4xl font-bold">Témoignages</h2>
+                <p class="mt-3 text-gray-600 max-w-2xl mx-auto">Ils ont vécu l'expérience missionnaire et témoignent de leur foi</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <h3 class="text-2xl font-semibold text-primary-gold mb-4">Notre Mission</h3>
-                    <p class="mb-4">Depuis plus de 20 ans, nous œuvrons pour répandre la Parole de Dieu et apporter un soutien concret aux communautés dans le besoin à travers le monde.</p>
-                    <p class="mb-4">Notre groupe missionnaire est animé par la foi, la compassion et le désir de servir. Nous croyons que chaque personne mérite d'entendre le message d'amour du Christ et de recevoir une aide concrète dans les moments difficiles.</p>
-                    <p class="mb-6">Nos valeurs fondamentales sont l'amour inconditionnel, l'intégrité, le service désintéressé et la foi inébranlable en Dieu.</p>
-                    <a href="mission.php" class="inline-flex items-center gap-2 bg-primary-gold text-white px-5 py-3 rounded-full">
-                        <i data-feather="arrow-right" class="w-4 h-4"></i>Voir Plus
-                    </a>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="relative testimonial-card bg-gray-200 p-6 rounded-md card-shadow">
+                    <p class="italic text-gray-700 mb-6">"Partir en mission au Kenya a transformé ma vie. Voir la joie dans les yeux des enfants était indescriptible."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-gold text-white inline-flex items-center justify-center font-semibold">MJ</div>
+                        <div>
+                            <div class="font-medium">Marie-Jeanne Dubois</div>
+                            <div class="text-sm text-gray-500">Missionnaire, Kenya 2024</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="rounded-md overflow-hidden h-80 card-shadow">
-                    <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1200" alt="Équipe" class="w-full h-full object-cover">
+                <div class="relative testimonial-card bg-gray-200 p-6 rounded-md card-shadow">
+                    <p class="italic text-gray-700 mb-6">"Cette expérience m'a appris l'essentiel : aimer sans compter et servir avec humilité."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-gold text-white inline-flex items-center justify-center font-semibold">PD</div>
+                        <div>
+                            <div class="font-medium">Pierre Durand</div>
+                            <div class="text-sm text-gray-500">Missionnaire, Brésil 2023</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-                <div class="bg-gray-200 p-6 rounded card-shadow text-center">
-                    <div class=" font-bold text-4xl text-primary-gold stat-number">120</div>
-                    <div class="text-gray-600 mt-2">Missions Accomplies</div>
-                </div>
-                <div class="bg-gray-200 p-6 rounded card-shadow text-center">
-                    <div class=" font-bold text-4xl text-primary-gold stat-number">45</div>
-                    <div class="text-gray-600 mt-2">Pays Visités</div>
-                </div>
-                <div class="bg-gray-200 p-6 rounded card-shadow text-center">
-                    <div class=" font-bold text-4xl text-primary-gold stat-number">10000</div>
-                    <div class="text-gray-600 mt-2">Vies Touchées</div>
-                </div>
-                <div class="bg-gray-200 p-6 rounded card-shadow text-center">
-                    <div class=" font-bold text-4xl text-primary-gold stat-number">200</div>
-                    <div class="text-gray-600 mt-2">Missionnaires</div>
+                <div class="relative testimonial-card bg-gray-200 p-6 rounded-md card-shadow">
+                    <p class="italic text-gray-700 mb-6">"Travailler avec Masaka Initiative m'a permis de concilier ma foi et mon désir d'aider les autres."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-gold text-white inline-flex items-center justify-center font-semibold">SM</div>
+                        <div>
+                            <div class="font-medium">Sophie Martin</div>
+                            <div class="text-sm text-gray-500">Bénévole, Philippines 2024</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- MISSIONS -->
-    <section id="missions" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class=" text-3xl md:text-4xl font-bold">Nos Missions</h2>
-                <p class="mt-3 text-gray-600 max-w-2xl mx-auto">Découvrez nos projets actuels et passés à travers le monde</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- mission card -->
-                <article class="mission-card bg-white rounded-md overflow-hidden card-shadow">
-                    <div class="h-56 mission-image bg-[url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900')] bg-cover bg-center"></div>
-                    <div class="p-6">
-                        <span class="inline-block bg-primary-gold text-white px-3 py-1 rounded-full text-sm mb-3">En cours</span>
-                        <h3 class="text-xl font-semibold mb-2">Évangélisation en Afrique</h3>
-                        <p class="text-gray-600 mb-4">Programme d'évangélisation et de formation biblique dans les villages ruraux d'Afrique de l'Ouest, touchant plus de 2000 personnes.</p>
-                        <a href="#" class="text-primary-gold inline-flex items-center gap-2 font-medium">
-                            En savoir plus <i data-feather="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- mission card -->
-                <article class="mission-card bg-white rounded-md overflow-hidden card-shadow">
-                    <div class="h-56 mission-image bg-[url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=900')] bg-cover bg-center"></div>
-                    <div class="p-6">
-                        <span class="inline-block bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm mb-3">Terminé</span>
-                        <h3 class=" text-xl font-semibold mb-2">Aide Humanitaire en Asie</h3>
-                        <p class="text-gray-600 mb-4">Distribution de nourriture, médicaments et fournitures scolaires dans les régions défavorisées d'Asie du Sud-Est.</p>
-                        <a href="#" class="text-primary-gold inline-flex items-center gap-2 font-medium">
-                            En savoir plus <i data-feather="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- mission card -->
-                <article class="mission-card bg-white rounded-md overflow-hidden card-shadow">
-                    <div class="h-56 mission-image bg-[url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=900')] bg-cover bg-center"></div>
-                    <div class="p-6">
-                        <span class="inline-block bg-primary-gold text-white px-3 py-1 rounded-full text-sm mb-3">En cours</span>
-                        <h3 class=" text-xl font-semibold mb-2">Construction d'Églises</h3>
-                        <p class="text-gray-600 mb-4">Édification de lieux de culte et de centres communautaires dans les zones reculées d'Amérique Latine.</p>
-                        <a href="#" class="text-primary-gold inline-flex items-center gap-2 font-medium">
-                            En savoir plus <i data-feather="arrow-right" class="w-4 h-4"></i>
-                        </a>
-                    </div>
-                </article>
-            </div>
-
-        </div>
-    </section>
-
-
-
-
-
 
     <!-- FOOTER -->
     <footer class="bg-gray-900 text-white">

@@ -7,10 +7,10 @@
     <title>Amasaka - Home</title>
 </head>
 
-<body>
+<body>Front-end
     <script>
         // Redirect to the /amasaka/ subdirectory
-        window.location.href = "French/index.php";
+        window.location.href = "Front-end/index.php";
     </script>
 </body>
 
