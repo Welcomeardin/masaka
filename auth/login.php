@@ -17,536 +17,278 @@ $redirect = $_GET['redirect'] ?? '../admin/index.php';
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../assert/favicon.jpg">
-    <title>Login | Masaka Initiative Admin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Admin Login | Masaka Initiative</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-gold': '#FEB05D',
+                        'dark-blue': '#2B2A2A',
+                        'light-gray': '#F5F2F2'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --cream: #F5F2F2;
-            --orange: #FEB05D;
-            --blue: #5A7ACD;
-            --dark: #2B2A2A;
-            --dark-80: rgba(43, 42, 42, 0.8);
-            --dark-12: rgba(43, 42, 42, 0.12);
-            --dark-06: rgba(43, 42, 42, 0.06);
-            --orange-light: rgba(254, 176, 93, 0.15);
-            --blue-light: rgba(90, 122, 205, 0.12);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background-color: var(--cream);
-            display: flex;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-
-        /* ── LEFT PANEL (60%) ── */
-        .left-panel {
-            width: 60%;
-            background-color: var(--dark);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 48px 56px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Decorative circles */
-        .left-panel::before {
-            content: '';
-            position: absolute;
-            width: 480px;
-            height: 480px;
-            border-radius: 50%;
-            border: 80px solid rgba(254, 176, 93, 0.08);
-            top: -120px;
-            right: -100px;
-            pointer-events: none;
-        }
-
-        .left-panel::after {
-            content: '';
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            border: 60px solid rgba(90, 122, 205, 0.1);
-            bottom: -80px;
-            left: -60px;
-            pointer-events: none;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 1;
-        }
-
-        .brand-icon {
-            width: 42px;
-            height: 42px;
-            background: var(--orange);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .brand-icon .material-icons {
-            color: var(--dark);
-            font-size: 22px;
-        }
-
-        .brand-name {
-            font-family: 'Sora', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: -0.3px;
-        }
-
-        .brand-name span {
-            color: var(--orange);
-        }
-
-        /* Hero content */
-        .hero {
-            z-index: 1;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(254, 176, 93, 0.12);
-            border: 1px solid rgba(254, 176, 93, 0.25);
-            color: var(--orange);
-            font-size: 12px;
-            font-weight: 500;
-            padding: 5px 12px;
-            border-radius: 100px;
-            margin-bottom: 24px;
-            letter-spacing: 0.5px;
-        }
-
-        .hero-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--orange);
-            border-radius: 50%;
-        }
-
-        .hero h1 {
-            font-family: 'Sora', sans-serif;
-            font-size: 42px;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.15;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-        }
-
-        .hero h1 em {
-            font-style: normal;
-            color: var(--orange);
-        }
-
-        .hero p {
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.5);
-            line-height: 1.7;
-            max-width: 380px;
-        }
-
-        /* Stats row */
-        .stats {
-            display: flex;
-            gap: 32px;
-            z-index: 1;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .stat-value {
-            font-family: 'Sora', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 0.3px;
-        }
-
-        .stat-divider {
-            width: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            align-self: stretch;
-        }
-
-        /* ── RIGHT PANEL (40%) ── */
-        .right-panel {
-            width: 40%;
-            background-color: var(--cream);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 48px;
-        }
-
-        .login-box {
-            width: 100%;
-            max-width: 360px;
-        }
-
-        .login-title {
-            font-family: 'Sora', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--dark);
-            letter-spacing: -0.5px;
-            margin-bottom: 6px;
-        }
-
-        .login-subtitle {
-            font-size: 14px;
-            color: var(--dark-80);
-            margin-bottom: 36px;
-        }
-
-        /* Form */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--dark);
-            margin-bottom: 8px;
-            letter-spacing: 0.1px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 13px 16px;
-            border: 1.5px solid var(--dark-12);
-            border-radius: 10px;
-            font-size: 14px;
-            font-family: 'DM Sans', sans-serif;
-            background: #fff;
-            color: var(--dark);
-            transition: border-color 0.2s, box-shadow 0.2s;
+        input:focus {
             outline: none;
+            ring: 2px solid #FEB05D;
         }
-
-        .form-group input::placeholder {
-            color: rgba(43, 42, 42, 0.3);
-        }
-
-        .form-group input:focus {
-            border-color: var(--blue);
-            box-shadow: 0 0 0 4px rgba(90, 122, 205, 0.1);
-        }
-
-        .password-toggle {
-            position: relative;
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 14px;
-            top: 40px;
-            cursor: pointer;
-            color: rgba(43, 42, 42, 0.35);
-            font-size: 18px;
-            transition: color 0.2s;
-        }
-
-        .toggle-password:hover {
-            color: var(--dark-80);
-        }
-
-        /* Alerts */
-        .error-message {
-            background: #FFF0F0;
-            color: #C0392B;
-            padding: 12px 14px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 3px solid #E74C3C;
-            font-size: 13px;
-        }
-
-        .error-message.hidden {
-            display: none;
-        }
-
-        .alert {
-            background: #F0FFF6;
-            color: #1A7A44;
-            padding: 12px 14px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 3px solid #2ECC71;
-            font-size: 13px;
-        }
-
-        .alert.hidden {
-            display: none;
-        }
-
-        /* Options row */
-        .options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .options label {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            font-size: 13px;
-            color: var(--dark-80);
-            cursor: pointer;
-        }
-
-        .options input[type="checkbox"] {
-            accent-color: var(--blue);
-            width: 15px;
-            height: 15px;
-            cursor: pointer;
-        }
-
-        /* Submit button */
-        .btn {
-            width: 100%;
-            background: var(--blue);
-            border: none;
-            padding: 14px;
-            color: #fff;
-            font-size: 15px;
-            font-weight: 600;
-            font-family: 'Sora', sans-serif;
-            border-radius: 10px;
-            cursor: pointer;
-            letter-spacing: -0.2px;
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .btn:hover {
-            background: #4A6BBD;
-            transform: translateY(-1px);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-            background: #3D5BAD;
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Accent strip below button */
-        .accent-strip {
-            margin-top: 12px;
-            height: 3px;
-            border-radius: 100px;
-            background: linear-gradient(90deg, var(--orange) 0%, var(--blue) 100%);
-            opacity: 0.35;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 28px;
-            font-size: 12px;
-            color: rgba(43, 42, 42, 0.4);
-            text-align: center;
-        }
-
-        .footer strong {
-            color: var(--dark-80);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-                overflow: auto;
-            }
-
-            .left-panel {
-                width: 100%;
-                padding: 32px 28px;
-                min-height: 240px;
-            }
-
-            .left-panel::before {
-                width: 280px;
-                height: 280px;
-            }
-
-            .hero h1 {
-                font-size: 28px;
-            }
-
-            .stats {
-                gap: 20px;
-            }
-
-            .right-panel {
-                width: 100%;
-                padding: 36px 24px;
-            }
+        .transition-smooth {
+            transition: all 0.3s ease;
         }
     </style>
 </head>
+<body class="min-h-screen bg-gradient-to-br from-light-gray to-gray-100 font-sans">
 
-<body>
+    <div class="min-h-screen flex items-center justify-center px-4 py-12">
+        <div class="max-w-6xl w-full">
+            
+            <!-- Main Card -->
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div class="flex flex-col lg:flex-row">
+                    
+                    <!-- Left Side - Branding Section -->
+                    <div class="lg:w-2/5 bg-gradient-to-br from-dark-blue to-gray-800 p-8 lg:p-10 text-white">
+                        <!-- Logo -->
+                        <div class="flex items-center gap-3 mb-12">
+                            <div class="w-12 h-12 bg-primary-gold rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-dark-blue" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-bold text-xl">Masaka Initiative</div>
+                                <div class="text-xs text-white/50">Admin Portal</div>
+                            </div>
+                        </div>
 
-    <!-- LEFT PANEL — 60% -->
-    <div class="left-panel">
-        <div class="brand">
-            <div class="brand-icon">
-                <span class="material-icons">dashboard</span>
-            </div>
-            <div class="brand-name">Masaka <span>Admin</span></div>
-        </div>
+                        <!-- Welcome Message -->
+                        <div class="mb-8">
+                            <h1 class="text-3xl font-bold mb-3">Welcome Back!</h1>
+                            <p class="text-white/70 text-sm leading-relaxed">
+                                Access the administrative dashboard to manage content, users, and monitor your organization's impact.
+                            </p>
+                        </div>
 
-        <div class="hero">
-            <div class="hero-badge">Admin Dashboard</div>
-            <h1>Manage with<br><em>confidence.</em></h1>
-            <p>Secure, streamlined access to the Masaka Initiative control panel. Everything you need, right where you need it.</p>
-        </div>
+                        <!-- Features List -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-primary-gold/20 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-primary-gold" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-white/80">Secure Email Notifications</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-primary-gold/20 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-primary-gold" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-white/80">Real-time Analytics Dashboard</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-primary-gold/20 rounded-lg flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-primary-gold" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-white/80">Multi-location Management</span>
+                            </div>
+                        </div>
 
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-value">100%</div>
-                <div class="stat-label">Secure login</div>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-                <div class="stat-value">24/7</div>
-                <div class="stat-label">Availability</div>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-                <div class="stat-value">v2.0</div>
-                <div class="stat-label">Dashboard</div>
-            </div>
-        </div>
-    </div>
+                        <!-- Security Badge -->
+                        <div class="mt-10 pt-6 border-t border-white/10">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                                </svg>
+                                <span class="text-xs text-white/50">256-bit SSL Encrypted</span>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- RIGHT PANEL — 40% -->
-    <div class="right-panel">
-        <div class="login-box">
-            <h2 class="login-title">Welcome back</h2>
-            <p class="login-subtitle">Sign in to your admin account</p>
+                    <!-- Right Side - Login Form -->
+                    <div class="lg:w-3/5 p-8 lg:p-10">
+                        <div class="max-w-md mx-auto">
+                            <!-- Header -->
+                            <div class="text-center lg:text-left mb-8">
+                                <h2 class="text-2xl font-bold text-dark-blue mb-2">Sign In</h2>
+                                <p class="text-gray-500 text-sm">Enter your credentials to access your account</p>
+                            </div>
 
-            <div id="errorMessage" class="error-message hidden">
-                <strong>Error:</strong> <span id="errorText"></span>
-            </div>
+                            <!-- Error Message -->
+                            <?php if (!empty($error) && isset($errorMessages[$error])): ?>
+                                <div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded-lg">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                        </svg>
+                                        <span class="text-red-700 text-sm"><?php echo htmlspecialchars($errorMessages[$error]); ?></span>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
 
-            <div id="successMessage" class="alert hidden">
-                <strong>Success:</strong> <span id="successText"></span>
-            </div>
+                            <!-- Dynamic Message Container -->
+                            <div id="errorMessage" class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded-lg hidden">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                    </svg>
+                                    <span id="errorText" class="text-red-700 text-sm"></span>
+                                </div>
+                            </div>
 
-            <form id="loginForm">
-                <input type="hidden" name="action" value="login">
-                <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect) ?>">
+                            <div id="successMessage" class="mb-6 p-4 bg-green-50 border-l-4 border-green-500 rounded-lg hidden">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                    </svg>
+                                    <span id="successText" class="text-green-700 text-sm"></span>
+                                </div>
+                            </div>
 
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="admin@example.com">
+                            <!-- Login Form -->
+                            <form id="loginForm" class="space-y-5">
+                                <input type="hidden" name="action" value="login">
+                                <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect) ?>">
+
+                                <!-- Email Field -->
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold text-dark-blue mb-2">
+                                        Email Address
+                                    </label>
+                                    <input type="email" 
+                                           id="email" 
+                                           name="email" 
+                                           required 
+                                           placeholder="admin@example.com"
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary-gold focus:ring-2 focus:ring-primary-gold/20 transition-all duration-300">
+                                </div>
+
+                                <!-- Password Field -->
+                                <div>
+                                    <label for="password" class="block text-sm font-semibold text-dark-blue mb-2">
+                                        Password
+                                    </label>
+                                    <div class="relative">
+                                        <input type="password" 
+                                               id="password" 
+                                               name="password" 
+                                               required 
+                                               placeholder="Enter your password"
+                                               class="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:border-primary-gold focus:ring-2 focus:ring-primary-gold/20 transition-all duration-300">
+                                        <button type="button"
+                                                onclick="togglePassword()"
+                                                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors">
+                                            <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Remember Me & Forgot Password -->
+                                <div class="flex items-center justify-between">
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" 
+                                               name="remember" 
+                                               class="w-4 h-4 text-primary-gold border-gray-300 rounded focus:ring-primary-gold">
+                                        <span class="text-sm text-gray-600">Remember me</span>
+                                    </label>
+                                    <a href="#" class="text-sm text-primary-gold hover:text-primary-gold/80 transition-colors">
+                                        Forgot password?
+                                    </a>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" 
+                                        id="submitBtn"
+                                        class="w-full bg-primary-gold hover:bg-primary-gold/90 text-dark-blue font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
+                                    Sign In
+                                </button>
+
+                                <!-- Divider -->
+                                <div class="relative my-6">
+                                    <div class="absolute inset-0 flex items-center">
+                                        <div class="w-full border-t border-gray-300"></div>
+                                    </div>
+                                    <div class="relative flex justify-center text-sm">
+                                        <span class="px-4 bg-white text-gray-500">Secure Access</span>
+                                    </div>
+                                </div>
+
+                                <!-- Help Text -->
+                                <p class="text-center text-xs text-gray-400">
+                                    Need help? <a href="#" class="text-primary-gold hover:underline">Contact support</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <div class="form-group password-toggle">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="Your password">
-                    <span class="material-icons toggle-password" onclick="togglePassword()">visibility</span>
-                </div>
-
-                <div class="options">
-                    <label>
-                        <input type="checkbox" name="remember"> Remember me
-                    </label>
-                </div>
-
-                <button type="submit" class="btn" id="submitBtn">Sign In</button>
-                <div class="accent-strip"></div>
-            </form>
-
-            <div class="footer">
-                &copy; 2025 <strong>Masaka Initiative</strong>
+            <!-- Footer -->
+            <div class="text-center mt-6">
+                <p class="text-xs text-gray-400">
+                    &copy; <?php echo date('Y'); ?> Masaka Initiative. All rights reserved.
+                </p>
             </div>
         </div>
     </div>
 
     <script>
+        // Toggle password visibility
         function togglePassword() {
             const passwordField = document.getElementById('password');
-            const icon = event.target;
+            const eyeIcon = document.getElementById('eyeIcon');
+            
             if (passwordField.type === 'password') {
                 passwordField.type = 'text';
-                icon.textContent = 'visibility_off';
+                eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>';
             } else {
                 passwordField.type = 'password';
-                icon.textContent = 'visibility';
+                eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>';
             }
         }
 
+        // Show error message
         function showError(message) {
             const errorDiv = document.getElementById('errorMessage');
             const errorText = document.getElementById('errorText');
             errorText.textContent = message;
             errorDiv.classList.remove('hidden');
-
-            // Hide success message if visible
             document.getElementById('successMessage').classList.add('hidden');
-
-            // Auto hide after 5 seconds
+            
             setTimeout(() => {
                 errorDiv.classList.add('hidden');
             }, 5000);
         }
 
+        // Show success message
         function showSuccess(message) {
             const successDiv = document.getElementById('successMessage');
             const successText = document.getElementById('successText');
             successText.textContent = message;
             successDiv.classList.remove('hidden');
-
-            // Hide error message if visible
             document.getElementById('errorMessage').classList.add('hidden');
         }
 
+        // Handle form submission
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -554,9 +296,15 @@ $redirect = $_GET['redirect'] ?? '../admin/index.php';
             const btn = document.getElementById('submitBtn');
             const originalText = btn.textContent;
 
-            // Disable button and show loading state
+            // Disable button and show loading
             btn.disabled = true;
-            btn.textContent = 'Signing in...';
+            btn.innerHTML = `
+                <svg class="inline animate-spin w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Signing in...
+            `;
 
             try {
                 const response = await fetch('../API/auth_handler.php', {
@@ -564,16 +312,12 @@ $redirect = $_GET['redirect'] ?? '../admin/index.php';
                     body: formData
                 });
 
-                // Check if response is OK
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
-                // Check if response is JSON
                 const contentType = response.headers.get('content-type');
                 if (!contentType || !contentType.includes('application/json')) {
-                    const text = await response.text();
-                    console.error('Invalid response format:', text);
                     throw new Error('Server returned invalid response format');
                 }
 
@@ -586,24 +330,26 @@ $redirect = $_GET['redirect'] ?? '../admin/index.php';
                         window.location.href = redirect;
                     }, 1000);
                 } else {
-                    showError(data.message || 'Login failed. Please try again.');
+                    showError(data.message || 'Invalid email or password. Please try again.');
                     btn.disabled = false;
-                    btn.textContent = originalText;
-
-                    // Clear password field for security
+                    btn.innerHTML = originalText;
                     document.getElementById('password').value = '';
                 }
             } catch (error) {
                 console.error('Error:', error);
-                showError('Connection error: ' + error.message);
+                showError('Connection error. Please check your internet connection and try again.');
                 btn.disabled = false;
-                btn.textContent = originalText;
+                btn.innerHTML = originalText;
             }
         });
 
-        // Optional: Add demo credentials hint (remove in production)
-        console.log('Demo credentials: admin@example.com / password');
+        // Add Enter key support
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
+        });
     </script>
 </body>
-
 </html>
